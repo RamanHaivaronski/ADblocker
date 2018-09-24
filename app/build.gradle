@@ -1,0 +1,144 @@
+buildscript {
+    ext.kotlin_version = '1.2.41'
+    ext.acraVersion = '5.1.3'
+    repositories {
+        mavenCentral()
+        google()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+plugins {
+    id 'com.gladed.androidgitversion' version '0.4.3'
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://jitpack.io"
+    }
+}
+
+androidGitVersion {
+    codeFormat 'MNNPPPPPP'
+    format '%tag%'
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 27
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    packagingOptions {
+        exclude 'META-INF/main.kotlin_module'
+    }
+    defaultConfig {
+        applicationId "org.blokada"
+        minSdkVersion 21
+        targetSdkVersion 27
+        versionName androidGitVersion.name()
+        versionCode androidGitVersion.code()
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    lintOptions {
+        abortOnError false
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        debug.java.srcDirs += 'src/unofficial/kotlin'
+        release.java.srcDirs += 'src/official/kotlin'
+        release.res.srcDirs += 'src/official/res'
+        release.java.srcDirs += 'src/official-imports/kotlin'
+        official.java.srcDirs += 'src/official/kotlin'
+        official.res.srcDirs += 'src/official/res'
+        official.java.srcDirs += 'src/official-imports/kotlin'
+        beta.java.srcDirs += 'src/official/kotlin'
+        beta.res.srcDirs += 'src/official/res'
+        beta.java.srcDirs += 'src/official-imports/kotlin'
+        adblockerHome.java.srcDirs += 'src/adblocker/kotlin'
+        adblockerHome.res.srcDirs += 'src/adblocker/res'
+        adblockerFdroid.java.srcDirs += 'src/adblocker/kotlin'
+        adblockerFdroid.res.srcDirs += 'src/adblocker/res'
+        dnsHome.java.srcDirs += 'src/dns/kotlin'
+        dnsHome.res.srcDirs += 'src/dns/res'
+    }
+    signingConfigs {
+        release {
+            keyAlias 'blokada'
+            keyPassword "111111"
+            storeFile file("D:\\newKey.jks")
+            storePassword "111111"
+        }
+    }
+    buildTypes {
+        debug {
+        }
+        release {
+            minifyEnabled false
+            useProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        official {
+            initWith(release)
+            matchingFallbacks = ['release']
+        }
+        beta {
+            initWith(release)
+            matchingFallbacks = ['release']
+        }
+    }
+    flavorDimensions("model")
+    productFlavors {
+        adblockerHome {
+            applicationId "org.blokada.origin.alarm"
+        }
+        adblockerFdroid {
+            applicationId "org.blokada.alarm"
+        }
+        dnsHome {
+            applicationId "org.blokada.alarm.dnschanger"
+        }
+    }
+}
+
+dependencies {
+    // Android support libraries
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
+
+    // Kotlin and its dependencies
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'com.github.salomonbrys.kodein:kodein:4.1.0'
+    implementation 'nl.komponents.kovenant:kovenant-core:3.3.0'
+    implementation 'nl.komponents.kovenant:kovenant-android:3.3.0'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:0.23.1"
+    implementation 'io.paperdb:paperdb:2.6'
+
+    // Proxy
+    implementation 'org.pcap4j:pcap4j-core:1.7.0'
+    implementation 'org.pcap4j:pcap4j-packetfactory-propertiesbased:1.7.0'
+    implementation 'dnsjava:dnsjava:2.1.8'
+
+    // UI libraries
+    implementation ('com.github.ozodrukh:CircularReveal:2.0.1@aar') {
+        transitive = true
+    }
+
+    // Testing and debugging
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation "ch.acra:acra-http:$acraVersion"
+    implementation "ch.acra:acra-limiter:$acraVersion"
+    implementation "ch.acra:acra-dialog:$acraVersion"
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorBackground">#0e0e0e</color>
+    <!--<color name="colorBackground">#383838</color>-->
+    <color name="colorBackgroundLight">#2e2e2e</color>
+    <color name="colorBackgroundThird">#262626</color>
+    <color name="colorBackgroundTrans">#000e0e0e</color>
+    <color name="colorBackgroundTransCenter">#DD0e0e0e</color>
+    <color name="colorBackgroundAbout">#000</color>
+    <color name="colorBackgroundAboutLight">#101010</color>
+    <color name="colorText">#eaeaea</color>
+    <color name="colorTextUnimportant">#6c6c6c</color>
+    <color name="colorActive">#ffffff</color>
+    <color name="colorShadow">#181818</color>
+    <color name="colorLogoWaiting">#99ffffff</color>
+    <color name="colorLogoWaitingFab">#EDB899</color>
+    <color name="colorLogoInactive">#fff</color>
+
+    <color name="colorPrimaryTrans">#DD1D1D1D</color>
+    <color name="colorPrimaryDark">#1D1D1D</color>
+    <color name="colorPrimaryDarker">#1a1a1a</color>
+    <color name="colorPrimaryDarkerTrans">#DD1a1a1a</color>
+    <color name="colorPrimaryLight">#FFFFFF</color>
+    <color name="colorPrimaryLightTrans">#DDFFFFFF</color>
+
+    <color name="colorSecondary">#3e3e3e</color>
+    <color name="colorAccent">#ff5f00</color>
+    <color name="colorAccentDark">#B64401</color>
+    <color name="colorAccentLight">#ff690e</color>
+    <color name="colorTextDark">#1D1D1D</color>
+    <color name="colorInactive">#b1b1b1</color>
+    <color name="colorThumbStart">#fdfdfd</color>
+    <color name="colorThumbEnd">#f5f5f5</color>
+
+
+
+    <color name="ksw_md_ripple_normal">#11000000</color>
+    <color name="ksw_md_ripple_checked">#33DF5401</color>
+    <color name="ksw_md_solid_shadow">#2a000000</color>
+    <color name="ksw_md_solid_normal">#f2f2f2</color>
+    <color name="ksw_md_solid_checked">#DF5401</color>
+    <color name="ksw_md_solid_disable">#FFFFFF</color>
+    <color name="ksw_md_solid_checked_disable">#bfbfbf</color>
+</resources>
