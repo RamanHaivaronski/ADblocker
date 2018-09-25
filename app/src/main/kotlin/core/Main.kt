@@ -120,7 +120,7 @@ class MainApplication: Application(), KodeinAware {
         dialog.setResText(R.string.main_report_text)
         dialog.setResCommentPrompt(R.string.main_report_comment)
         dialog.setResTheme(R.style.GsTheme_Dialog)
-        dialog.setResIcon(R.drawable.ic_blokada)
+        dialog.setResIcon(R.drawable.ic_blokada1)
         ACRA.init(this, builder)
     }
 

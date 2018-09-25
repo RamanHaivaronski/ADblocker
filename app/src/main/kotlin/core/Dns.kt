@@ -251,44 +251,44 @@ class DnsLocalisedFetcher(
 
 val DASH_ID_DNS = "dns"
 
-class DashDns(
-        val xx: Environment,
-        val ctx: Context = xx().instance(),
-        val w: Worker = xx().with("dash_dns").instance(),
-        val dns: Dns = xx().instance(),
-        val act: ComponentProvider<MainActivity> = xx().instance(),
-        val i18n: I18n = xx().instance()
-) : Dash(DASH_ID_DNS,
-        R.drawable.ic_server,
-        text = ctx.getString(R.string.dns_text_none),
-        menuDashes = Triple(Add(ctx), QuickActions(xx), null),
-        hasView = true
-) {
-    private var listener: IWhen? = null
-
-    init {
-        listener = dns.choices.doOnUiWhenSet().then {
-            update(dns.choices().firstOrNull { it.active })
-        }
-    }
-
-    private fun update(dns: DnsChoice?) {
-        text = when {
-            dns == null -> ctx.getString(R.string.dns_text_none)
-            dns.servers.isEmpty() -> ctx.getString(R.string.dns_text_none)
-            dns.id.startsWith("custom") -> printServers(dns.servers)
-            else -> i18n.localisedOrNull("dns_${dns.id}_name") ?: dns.id.capitalize()
-        }
-    }
-
-    override fun createView(parent: Any): Any? {
-        val view = LayoutInflater.from(ctx).inflate(R.layout.view_dnslist, parent as ViewGroup, false)
-        if (view is DnsListView) {
-            view.landscape = act.get()?.landscape ?: false
-        }
-        return view
-    }
-}
+//class DashDns(
+//        val xx: Environment,
+//        val ctx: Context = xx().instance(),
+//        val w: Worker = xx().with("dash_dns").instance(),
+//        val dns: Dns = xx().instance(),
+//        val act: ComponentProvider<MainActivity> = xx().instance(),
+//        val i18n: I18n = xx().instance()
+//) : Dash(DASH_ID_DNS,
+//        R.drawable.ic_server,
+//        text = ctx.getString(R.string.dns_text_none),
+//        menuDashes = Triple(Add(ctx), QuickActions(xx), null),
+//        hasView = true
+//) {
+//    private var listener: IWhen? = null
+//
+//    init {
+//        listener = dns.choices.doOnUiWhenSet().then {
+//            update(dns.choices().firstOrNull { it.active })
+//        }
+//    }
+//
+//    private fun update(dns: DnsChoice?) {
+//        text = when {
+//            dns == null -> ctx.getString(R.string.dns_text_none)
+//            dns.servers.isEmpty() -> ctx.getString(R.string.dns_text_none)
+//            dns.id.startsWith("custom") -> printServers(dns.servers)
+//            else -> i18n.localisedOrNull("dns_${dns.id}_name") ?: dns.id.capitalize()
+//        }
+//    }
+//
+//    override fun createView(parent: Any): Any? {
+//        val view = LayoutInflater.from(ctx).inflate(R.layout.view_dnslist, parent as ViewGroup, false)
+//        if (view is DnsListView) {
+//            view.landscape = act.get()?.landscape ?: false
+//        }
+//        return view
+//    }
+//}
 
 class Add(
         val ctx: Context,

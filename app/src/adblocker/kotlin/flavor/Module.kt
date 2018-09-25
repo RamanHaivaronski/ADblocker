@@ -2,7 +2,7 @@ package flavor
 
 import adblocker.ALollipopEngineManager
 import adblocker.TunnelDashCountDropped
-import adblocker.TunnelDashHostsCount
+//import adblocker.TunnelDashHostsCount
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
@@ -10,16 +10,16 @@ import android.net.VpnService
 import com.github.salomonbrys.kodein.*
 import core.*
 import filter.DashFilterBlacklist
-import filter.DashFilterWhitelist
+//import filter.DashFilterWhitelist
 import gs.environment.Journal
-import notification.NotificationDashKeepAlive
-import notification.NotificationDashOn
+//import notification.NotificationDashKeepAlive
+//import notification.NotificationDashOn
 import notification.displayNotification
 import notification.hideNotification
 import org.blokada.R
 import tunnel.ATunnelService
 import update.AboutDash
-import update.UpdateDash
+//import update.UpdateDash
 
 fun newFlavorModule(ctx: Context): Kodein.Module {
     return Kodein.Module {
@@ -76,16 +76,16 @@ fun newFlavorModule(ctx: Context): Kodein.Module {
         }
         bind<List<Dash>>() with singleton {
             listOf(
-                    UpdateDash(ctx).activate(true),
+//                    UpdateDash(ctx).activate(true),
                     TunnelDashCountDropped(ctx).activate(true),
                     DashFilterBlacklist(ctx).activate(true),
-                    DashFilterWhitelist(ctx).activate(true),
-                    DashDns(lazy).activate(true),
-                    NotificationDashOn(ctx).activate(true),
-                    NotificationDashKeepAlive(ctx).activate(true),
-                    AutoStartDash(ctx).activate(true),
-                    ConnectivityDash(ctx).activate(true),
-                    TunnelDashHostsCount(ctx).activate(true),
+//                    DashFilterWhitelist(ctx).activate(true),
+//                    DashDns(lazy).activate(true),
+//                    NotificationDashOn(ctx).activate(true),
+//                    NotificationDashKeepAlive(ctx).activate(true),
+//                    AutoStartDash(ctx).activate(true),
+//                    ConnectivityDash(ctx).activate(true),
+//                    TunnelDashHostsCount(ctx).activate(true),
                     PatronDash(lazy).activate(false),
                     PatronAboutDash(lazy).activate(false),
                     DonateDash(lazy).activate(false),

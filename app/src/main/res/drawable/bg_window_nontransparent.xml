@@ -5,10 +5,12 @@
             <solid android:color="@color/colorBackground" />
         </shape>
     </item>
-    <item>
-        <bitmap android:src="@drawable/bg_window"
-                android:tileMode="disabled"
-                android:gravity="center"
-            />
-    </item>
+    <!--<item>-->
+        <!--<bitmap android:src="@drawable/epol_soft_logo"-->
+                <!--android:tileMode="disabled"-->
+                <!--android:gravity="center"-->
+                <!--android:width="200px"-->
+                <!--android:height="100px"-->
+            <!--/>-->
+    <!--</item>-->
 </layer-list>

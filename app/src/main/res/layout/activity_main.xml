@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root"
@@ -48,14 +49,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal|top"
-            android:minLines="2"
             android:maxLines="10"
+            android:minLines="2"
             android:paddingBottom="32dp"
             android:paddingLeft="32dp"
             android:paddingRight="32dp"
             android:paddingTop="16dp"
             android:text="@string/main_loading"
             android:textColor="@color/colorText" />
+
     </FrameLayout>
 
     <View

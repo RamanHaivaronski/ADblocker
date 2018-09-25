@@ -51,12 +51,12 @@ fun newUpdateModule(ctx: Context): Kodein.Module {
             }
 
             // Display an info message when update is available
-            repo.content.doOnUiWhenSet().then {
-                if (isUpdate(ctx, repo.content().newestVersionCode)) {
-                    ui.infoQueue %= ui.infoQueue() + Info(InfoType.CUSTOM, R.string.update_infotext)
-                    u.lastSeenUpdateMillis.refresh(force = true)
-                }
-            }
+//            repo.content.doOnUiWhenSet().then {
+//                if (isUpdate(ctx, repo.content().newestVersionCode)) {
+//                    ui.infoQueue %= ui.infoQueue() + Info(InfoType.CUSTOM, R.string.update_infotext)
+//                    u.lastSeenUpdateMillis.refresh(force = true)
+//                }
+//            }
 
             // Display notifications for updates
             u.lastSeenUpdateMillis.doOnUiWhenSet().then {

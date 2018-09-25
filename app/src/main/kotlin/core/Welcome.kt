@@ -83,16 +83,16 @@ class WelcomeDialogManager (
         when {
             !pages.loaded() -> Unit
             displaying -> Unit
-            step == 0 && version.obsolete() -> {
-                dialogObsolete.onClosed = { accept ->
-                    displaying = false
-                    if (accept == 1) {
-                        OpenInBrowserDash(ctx, pages.download).onClick?.invoke(0)
-                    }
-                }
-                dialogObsolete.show()
-                displaying = true
-            }
+//            step == 0 && version.obsolete() -> {
+//                dialogObsolete.onClosed = { accept ->
+//                    displaying = false
+//                    if (accept == 1) {
+//                        OpenInBrowserDash(ctx, pages.download).onClick?.invoke(0)
+//                    }
+//                }
+//                dialogObsolete.show()
+//                displaying = true
+//            }
             step == 0 && !welcome.introSeen() -> {
                 dialogIntro.onClosed = { accept ->
                     displaying = false
@@ -106,36 +106,36 @@ class WelcomeDialogManager (
                         run(step = 9)
                     }
                 }
-                dialogIntro.show()
+                //dialogIntro.show()
                 displaying = true
             }
-            step == 0 && version.previousCode() < currentAppVersion -> {
-                version.previousCode %= currentAppVersion
-                dialogUpdate.onClosed = { accept ->
-                    displaying = false
-                    if (accept == 1) {
-                        OpenInBrowserDash(ctx, pages.donate).onClick?.invoke(0)
-                    } else if (accept == 2) {
-                        run(step = 2)
-                    }
-                }
-                dialogUpdate.show()
-                displaying = true
-            }
-            step == 0 && welcome.ctaSeenCounter() > 0 -> {
-                welcome.ctaSeenCounter %= welcome.ctaSeenCounter() - 1
-                run(step = 9)
-            }
-            step == 0 && welcome.ctaSeenCounter() == 0 -> {
-                dialogCta.onClosed = { accept ->
-                    displaying = false
-                    welcome.ctaSeenCounter %= 5
-                    run(step = 9)
-                }
-                dialogCta.show()
-                displaying = true
-            }
-            step == 1 -> {
+//            step == 0 && version.previousCode() < currentAppVersion -> {
+//                version.previousCode %= currentAppVersion
+//                dialogUpdate.onClosed = { accept ->
+//                    displaying = false
+//                    if (accept == 1) {
+//                        OpenInBrowserDash(ctx, pages.donate).onClick?.invoke(0)
+//                    } else if (accept == 2) {
+//                        run(step = 2)
+//                    }
+//                }
+//                dialogUpdate.show()
+//                displaying = true
+//            }
+//            step == 0 && welcome.ctaSeenCounter() > 0 -> {
+//                welcome.ctaSeenCounter %= welcome.ctaSeenCounter() - 1
+//                run(step = 9)
+//            }
+//            step == 0 && welcome.ctaSeenCounter() == 0 -> {
+//                dialogCta.onClosed = { accept ->
+//                    displaying = false
+//                    welcome.ctaSeenCounter %= 5
+//                    run(step = 9)
+//                }
+//                dialogCta.show()
+//                displaying = true
+//            }
+            step == 1  -> {
                 dialogGuide.onClosed = { accept ->
                     displaying = false
                     if (accept == 1) {
@@ -144,35 +144,35 @@ class WelcomeDialogManager (
                     }
                     run(step = 9)
                 }
-                dialogGuide.show()
+                //dialogGuide.show()
                 displaying = true
             }
-            step == 2 && welcome.patronShow() -> {
-                dialogPatron.onClosed = { button ->
-                    displaying = false
-                    if (button == 1) {
-                        OpenInBrowserDash(ctx, pages.patron).onClick?.invoke(0)
-                    }
-                    welcome.patronSeen %= true
-                    run(step = 9)
-                }
-                dialogPatron.show()
-                displaying = true
-            }
-            getInstalledBuilds().size > 1 -> {
-                dialogCleanup.onClosed = { accept ->
-                    displaying = false
-                    if (accept == 1) {
-                        Toast.makeText(ctx, R.string.welcome_cleanup_done, Toast.LENGTH_SHORT).show()
-                        val builds = getInstalledBuilds()
-                        for (b in builds.subList(1, builds.size).reversed()) {
-                            uninstallPackage(b)
-                        }
-                    }
-                }
-                dialogCleanup.show()
-                displaying = true
-            }
+//            step == 2 && welcome.patronShow() -> {
+//                dialogPatron.onClosed = { button ->
+//                    displaying = false
+//                    if (button == 1) {
+//                        OpenInBrowserDash(ctx, pages.patron).onClick?.invoke(0)
+//                    }
+//                    welcome.patronSeen %= true
+//                    run(step = 9)
+//                }
+//                dialogPatron.show()
+//                displaying = true
+//            }
+//            getInstalledBuilds().size > 1 -> {
+//                dialogCleanup.onClosed = { accept ->
+//                    displaying = false
+//                    if (accept == 1) {
+//                        Toast.makeText(ctx, R.string.welcome_cleanup_done, Toast.LENGTH_SHORT).show()
+//                        val builds = getInstalledBuilds()
+//                        for (b in builds.subList(1, builds.size).reversed()) {
+//                            uninstallPackage(b)
+//                        }
+//                    }
+//                }
+//                dialogCleanup.show()
+//                displaying = true
+//            }
         }
     }
 

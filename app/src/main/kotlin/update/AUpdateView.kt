@@ -31,35 +31,35 @@ class AUpdateView(
         set(value) {
             field = value
             if (value == null) {
-                download.visibility = View.GONE
-                creditsView.visibility = View.VISIBLE
-                appInfo.visibility = View.VISIBLE
-                headerView.text = context.getString(R.string.update_header_noupdate)
-                headerView.setTextColor(context.resources.getColor(R.color.colorActive))
-                iconView.setColorFilter(context.resources.getColor(R.color.colorActive))
-                iconView.setImageResource(R.drawable.ic_info)
+//                download.visibility = View.GONE
+//                creditsView.visibility = View.VISIBLE
+//                appInfo.visibility = View.VISIBLE
+//                headerView.text = context.getString(R.string.update_header_noupdate)
+//                headerView.setTextColor(context.resources.getColor(R.color.colorActive))
+//                iconView.setColorFilter(context.resources.getColor(R.color.colorActive))
+//                iconView.setImageResource(R.drawable.ic_info)
             } else {
-                download.visibility = View.VISIBLE
-                creditsView.visibility = View.GONE
-                appInfo.visibility = View.GONE
-                headerView.text = "${context.getString(R.string.update_header)} ${context.getString(R.string.branding_app_name)} ${value}"
-                headerView.setTextColor(context.resources.getColor(R.color.colorAccent))
-                iconView.setColorFilter(context.resources.getColor(R.color.colorAccent))
-                iconView.setImageResource(R.drawable.ic_new_releases)
+//                download.visibility = View.VISIBLE
+//                creditsView.visibility = View.GONE
+//                appInfo.visibility = View.GONE
+//                headerView.text = "${context.getString(R.string.update_header)} ${context.getString(R.string.branding_app_name)} ${value}"
+//                headerView.setTextColor(context.resources.getColor(R.color.colorAccent))
+//                iconView.setColorFilter(context.resources.getColor(R.color.colorAccent))
+//                iconView.setImageResource(R.drawable.ic_new_releases)
             }
         }
 
     var onClick = {}
     var onClickBackup = {}
 
-    private val currentView by lazy { findViewById(R.id.update_current) as TextView }
-    private val creditsView by lazy { findViewById(R.id.update_credits) as View }
-    private val download by lazy { findViewById(R.id.update_download) as TextView }
-    private val headerView by lazy { findViewById(R.id.update_header) as TextView }
-    private val iconView by lazy { findViewById(R.id.update_icon) as ImageView }
-    private val changelogView by lazy { findViewById(R.id.update_changelog) as View }
-    private val makerView by lazy { findViewById(R.id.update_maker) as View }
-    private val appInfo by lazy { findViewById(R.id.update_appinfo) as TextView }
+//    private val currentView by lazy { findViewById(R.id.update_current) as TextView }
+//    private val creditsView by lazy { findViewById(R.id.update_credits) as View }
+//    private val download by lazy { findViewById(R.id.update_download) as TextView }
+//    private val headerView by lazy { findViewById(R.id.update_header) as TextView }
+//    private val iconView by lazy { findViewById(R.id.update_icon) as ImageView }
+//    private val changelogView by lazy { findViewById(R.id.update_changelog) as View }
+//    private val makerView by lazy { findViewById(R.id.update_maker) as View }
+//    private val appInfo by lazy { findViewById(R.id.update_appinfo) as TextView }
 
     private val ver by lazy { ctx.inject().instance<Version>() }
     private val pages by lazy { ctx.inject().instance<Pages>() }
@@ -83,37 +83,37 @@ class AUpdateView(
 
     override fun onFinishInflate() {
         super.onFinishInflate()
-        currentView.text = Html.fromHtml("${ver.appName} ${ver.name}")
+//        currentView.text = Html.fromHtml("${ver.appName} ${ver.name}")
 
-        download.setOnClickListener { if (canClick) {
-            canClick = false
-            onClick()
-        } else {
-            canClick = true
-            onClickBackup()
-        }}
+//        download.setOnClickListener { if (canClick) {
+//            canClick = false
+//            onClick()
+//        } else {
+//            canClick = true
+//            onClickBackup()
+//        }}
 
-        changelogView.setOnClickListener {
-            dialogChangelog.show()
-        }
+//        changelogView.setOnClickListener {
+//            dialogChangelog.show()
+//        }
+//
+//        creditsView.setOnClickListener {
+//            dialogCredits.show()
+//        }
 
-        creditsView.setOnClickListener {
-            dialogCredits.show()
-        }
+//        makerView.setOnClickListener {
+//            val intent = Intent(Intent.ACTION_VIEW)
+//            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+//            intent.setData(Uri.parse(context.getString(R.string.branding_maker_url)))
+//            context.startActivity(intent)
+//        }
+//        makerView.setOnLongClickListener {
+//            throw Exception("Are we 1984?")
+//        }
 
-        makerView.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            intent.setData(Uri.parse(context.getString(R.string.branding_maker_url)))
-            context.startActivity(intent)
-        }
-        makerView.setOnLongClickListener {
-            throw Exception("Are we 1984?")
-        }
-
-        appInfo.setOnClickListener {
-            context.startActivity(newAppDetailsIntent(context.packageName))
-        }
+//        appInfo.setOnClickListener {
+//            context.startActivity(newAppDetailsIntent(context.packageName))
+//        }
     }
 
 }

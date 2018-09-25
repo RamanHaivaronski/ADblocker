@@ -209,55 +209,55 @@ class CreditsDash(
     }
 }
 
-class AutoStartDash(
-        val ctx: Context,
-        val s: Tunnel = ctx.inject().instance()
-) : Dash(
-        "main_autostart",
-        icon = false,
-        text = ctx.getString(R.string.main_autostart_text),
-        isSwitch = true
-) {
+//class AutoStartDash(
+//        val ctx: Context,
+//        val s: Tunnel = ctx.inject().instance()
+//) : Dash(
+//        "main_autostart",
+//        icon = false,
+//        text = ctx.getString(R.string.main_autostart_text),
+//        isSwitch = true
+//) {
+//
+//    override var checked = false
+//        set(value) { if (field != value) {
+//            field = value
+//            s.startOnBoot %= value
+//            onUpdate.forEach { it() }
+//        }}
+//
+//    private var listener: IWhen? = null
+//    init {
+//        listener = s.startOnBoot.doOnUiWhenSet().then {
+//            checked = s.startOnBoot()
+//        }
+//    }
+//}
 
-    override var checked = false
-        set(value) { if (field != value) {
-            field = value
-            s.startOnBoot %= value
-            onUpdate.forEach { it() }
-        }}
-
-    private var listener: IWhen? = null
-    init {
-        listener = s.startOnBoot.doOnUiWhenSet().then {
-            checked = s.startOnBoot()
-        }
-    }
-}
-
-class ConnectivityDash(
-        val ctx: Context,
-        val s: Device = ctx.inject().instance()
-) : Dash(
-        "main_connectivity",
-        icon = false,
-        text = ctx.getString(R.string.main_connectivity_text),
-        isSwitch = true
-) {
-
-    override var checked = false
-        set(value) { if (field != value) {
-            field = value
-            s.watchdogOn %= value
-            onUpdate.forEach { it() }
-        }}
-
-    private var listener: IWhen? = null
-    init {
-        listener = s.watchdogOn.doOnUiWhenSet().then {
-            checked = s.watchdogOn()
-        }
-    }
-}
+//class ConnectivityDash(
+//        val ctx: Context,
+//        val s: Device = ctx.inject().instance()
+//) : Dash(
+//        "main_connectivity",
+//        icon = false,
+//        text = ctx.getString(R.string.main_connectivity_text),
+//        isSwitch = true
+//) {
+//
+//    override var checked = false
+//        set(value) { if (field != value) {
+//            field = value
+//            s.watchdogOn %= value
+//            onUpdate.forEach { it() }
+//        }}
+//
+//    private var listener: IWhen? = null
+//    init {
+//        listener = s.watchdogOn.doOnUiWhenSet().then {
+//            checked = s.watchdogOn()
+//        }
+//    }
+//}
 
 class OpenInBrowserDash(
         val ctx: Context,

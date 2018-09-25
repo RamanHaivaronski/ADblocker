@@ -14,7 +14,7 @@ class ContentActor(
         private val ui: UiState,
         private val reveal: RevealFrameLayout,
         private val revealContainer: FrameLayout,
-        private val topBar: ATopBarView,
+//        private val topBar: ATopBarView,
         private val radiusSize: Float
 ) {
 
@@ -40,8 +40,8 @@ class ContentActor(
             return
         }
 
-        topBar.bg = dash.topBarColor
-        topBar.mode = ATopBarView.Mode.BACK
+//        topBar.bg = dash.topBarColor
+//        topBar.mode = ATopBarView.Mode.BACK
         reveal.visibility = android.view.View.VISIBLE
 
         val animator = ViewAnimationUtils.createCircularReveal(
@@ -68,8 +68,8 @@ class ContentActor(
     }
 
     fun back(after: () -> Unit = {}): Boolean {
-        topBar.bg = null
-        topBar.mode = ATopBarView.Mode.BAR
+//        topBar.bg = null
+//        topBar.mode = ATopBarView.Mode.BAR
 
         if (openDash == null) {
             after()
@@ -96,8 +96,9 @@ class ContentActor(
     }
 
     private fun getWidth(x: Int): Int {
-        return if (x == X_END) topBar.measuredWidth
-        else x
+        return x
+//        return if (x == X_END) topBar.measuredWidth
+//        else x
     }
 
     companion object {

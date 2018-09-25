@@ -31,46 +31,47 @@ class AboutDash(
     }
 }
 
-class UpdateDash(
-        val ctx: Context,
-        val repo: Repo = ctx.inject().instance(),
-        val ui: UiState = ctx.inject().instance()
-) : Dash("update_update",
-        R.drawable.ic_info,
-        text = ctx.getString(R.string.update_dash_uptodate),
-        menuDashes = Triple(UpdateForceDash(ctx, repo), null, null),
-        hasView = true,
-        topBarColor = R.color.colorBackgroundAboutLight,
-        onDashOpen = {
-            updateView?.canClick = true
-        }
-) {
+//class UpdateDash(
+//        val ctx: Context,
+//        val repo: Repo = ctx.inject().instance(),
+//        val ui: UiState = ctx.inject().instance()
+//) : Dash("update_update",
+//        R.drawable.ic_info,
+//        text = ctx.getString(R.string.update_dash_uptodate),
+//        menuDashes = Triple(UpdateForceDash(ctx, repo), null, null),
+//        hasView = true,
+//        topBarColor = R.color.colorBackgroundAboutLight,
+//        onDashOpen = {
+//            updateView?.canClick = true
+//        }
+//) {
 
-    private val listener: Any
-    init {
-        listener = repo.content.doOnUiWhenSet().then {
-            update(repo.content().newestVersionCode)
-        }
-    }
+//    private val listener: Any
+//    init {
+//        listener = repo.content.doOnUiWhenSet().then {
+//            update(repo.content().newestVersionCode)
+//        }
+//    }
 
-    private fun update(code: Int) {
-        when(isUpdate(ctx, code)) {
-            true -> {
-                active = true
-                text = ctx.getString(R.string.update_dash_available)
-                icon = R.drawable.ic_new_releases
-                ui.dashes %= ui.dashes()
-            }
-            else -> {
-                text = ctx.getString(R.string.update_dash_uptodate)
-                icon = R.drawable.ic_info
-            }
-        }
-    }
-    override fun createView(parent: Any): Any? {
-        return createUpdateView(parent as ViewGroup, repo)
-    }
-}
+//    private fun update(code: Int) {
+//        when(isUpdate(ctx, code)) {
+//            true -> {
+//                active = true
+//                text = ctx.getString(R.string.update_dash_available)
+//                icon = R.drawable.ic_new_releases
+//                ui.dashes %= ui.dashes()
+//            }
+//            else -> {
+//                text = ctx.getString(R.string.update_dash_uptodate)
+//                icon = R.drawable.ic_info
+//            }
+//        }
+//    }
+
+//    override fun createView(parent: Any): Any? {
+//        return createUpdateView(parent as ViewGroup, repo)
+//    }
+//}
 
 private var listener: gs.property.IWhen? = null
 private var updateView: AUpdateView? = null

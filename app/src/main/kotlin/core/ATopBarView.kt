@@ -8,7 +8,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.DecelerateInterpolator
-import android.widget.ImageView
+//import android.widget.ImageView
 import android.widget.RelativeLayout
 import gs.presentation.ResizeAnimation
 import gs.presentation.doAfter
@@ -32,67 +32,67 @@ class ATopBarView(
             }
         }
 
-    var active = false
-        set(value) {
-            when {
-                field == value -> Unit
-                value == true -> toActive { field = value }
-                else -> fromActive { field = value }
-            }
-        }
-
-    var waiting = false
-        set(value) {
-            when {
-                field == value -> Unit
-                value == true -> toWaiting { field = value }
-                else -> fromWaiting { field = value }
-            }
-        }
+//    var active = false
+//        set(value) {
+//            when {
+//                field == value -> Unit
+//                value == true -> toActive { field = value }
+//                else -> fromActive { field = value }
+//            }
+//        }
+//
+//    var waiting = false
+//        set(value) {
+//            when {
+//                field == value -> Unit
+//                value == true -> toWaiting { field = value }
+//                else -> fromWaiting { field = value }
+//            }
+//        }
 
     var bg: Int? = null
 
-    var onLogoClick = {}
-    var onBackClick = {}
+//    var onLogoClick = {}
+//    var onBackClick = {}
     var onModeSwitched = {}
 
-    val action1 by lazy { findViewById(R.id.topbar_action1) as ADashView }
-    val action2 by lazy { findViewById(R.id.topbar_action2) as ADashView }
-    val action3 by lazy { findViewById(R.id.topbar_action3) as ADashView }
-    val action4 by lazy { findViewById(R.id.topbar_action4) as ADashView }
+//    val action1 by lazy { findViewById(R.id.topbar_action1) as ADashView }
+//    val action2 by lazy { findViewById(R.id.topbar_action2) as ADashView }
+//    val action3 by lazy { findViewById(R.id.topbar_action3) as ADashView }
+//    val action4 by lazy { findViewById(R.id.topbar_action4) as ADashView }
 
-    private val actions by lazy { listOf(action1, action2, action3, action4) }
-    private val logo by lazy { findViewById(R.id.topbar_logo) as ImageView }
-    private val back by lazy { findViewById(R.id.topbar_back) as View }
-
-    private val header by lazy { findViewById(R.id.topbar_header) as View }
+//    private val actions by lazy { listOf(action1, action2, action3, action4) }
+//    private val logo by lazy { findViewById(R.id.topbar_logo) as ImageView }
+//    private val back by lazy { findViewById(R.id.topbar_back) as View }
+//
+//    private val header by lazy { findViewById(R.id.topbar_header) as View }
 
     private val dur = 200L
 
     override fun onFinishInflate() {
         super.onFinishInflate()
 
-        logo.setOnClickListener {
-            rotate(logo, -5f, {
-                rotate(logo, 10f, {
-                    rotate(logo, -5f, {
-                        onLogoClick()
-                    })
-                })
-            })
-        }
+//        logo.setOnClickListener {
+//            rotate(logo, -5f, {
+//                rotate(logo, 10f, {
+//                    rotate(logo, -5f, {
+//                        onLogoClick()
+//                    })
+//                })
+//            })
+//        }
 
-        back.setOnClickListener {
-            rotate(back, -15f, {
-                rotate(back, 30f, {
-                    rotate(back, -15f, {
-                        onBackClick()
-                    })
-                })
-            })
-        }
+//        back.setOnClickListener {
+//            rotate(back, -15f, {
+//                rotate(back, 30f, {
+//                    rotate(back, -15f, {
+//                        onBackClick()
+//                    })
+//                })
+//            })
+//        }
 
-        fromActive {}
+//        fromActive {}
         mode = Mode.WELCOME
     }
 
@@ -111,91 +111,91 @@ class ATopBarView(
     }
 
     private fun toWelcome(after: () -> Unit) {
-        logo.visibility = View.VISIBLE
-        val a = ResizeAnimation(logo, resources.toPx(196), logo.measuredHeight, square = true)
-        a.duration = 300
-        a.interpolator = DecelerateInterpolator(1.3f)
-        logo.startAnimation(a)
-        logo.animate().setDuration(dur).translationX(halfWidthPx - resources.toPx(98 + 8).toFloat())
+//        logo.visibility = View.VISIBLE
+//        val a = ResizeAnimation(logo, resources.toPx(196), logo.measuredHeight, square = true)
+//        a.duration = 300
+//        a.interpolator = DecelerateInterpolator(1.3f)
+//        logo.startAnimation(a)
+//        logo.animate().setDuration(dur).translationX(halfWidthPx - resources.toPx(98 + 8).toFloat())
+//
+//        header.animate().translationX(100f).alpha(0f).doAfter {
+//            header.visibility = View.GONE
+//        }
 
-        header.animate().translationX(100f).alpha(0f).doAfter {
-            header.visibility = View.GONE
-        }
+//        back.animate().setDuration(dur).translationX(-180f)
 
-        back.animate().setDuration(dur).translationX(-180f)
-
-        actions.forEach { action ->
-            action.animate().translationX(50f).alpha(0f)
-        }
+//        actions.forEach { action ->
+//            action.animate().translationX(50f).alpha(0f)
+//        }
 
         if (mode != Mode.WELCOME) toBackground(color = null)
         after()
     }
 
     private fun toBar(after: () -> Unit) {
-        logo.visibility = View.VISIBLE
-        val a = ResizeAnimation(logo, resources.toPx(64), logo.measuredHeight, square = true)
-        a.duration = 300
-        a.interpolator = DecelerateInterpolator()
-        logo.startAnimation(a)
-        logo.animate().setDuration(dur).translationX(0f)
+//        logo.visibility = View.VISIBLE
+//        val a = ResizeAnimation(logo, resources.toPx(64), logo.measuredHeight, square = true)
+//        a.duration = 300
+//        a.interpolator = DecelerateInterpolator()
+//        logo.startAnimation(a)
+//        logo.animate().setDuration(dur).translationX(0f)
+//
+//        header.visibility = View.VISIBLE
+//        header.animate().translationX(0f).alpha(1f)
+//
+//        back.animate().setDuration(dur).translationX(-180f)
 
-        header.visibility = View.VISIBLE
-        header.animate().translationX(0f).alpha(1f)
-
-        back.animate().setDuration(dur).translationX(-180f)
-
-        actions.forEach { action ->
-            action.animate().translationX(0f).alpha(1f)
-        }
+//        actions.forEach { action ->
+//            action.animate().translationX(0f).alpha(1f)
+//        }
 
         toBackground(color = bg ?: R.color.colorBackgroundLight)
         after()
     }
 
     private fun toBack(after: () -> Unit) {
-        val a = ResizeAnimation(logo, resources.toPx(64), logo.measuredHeight, square = true)
-        a.duration = 300
-        a.interpolator = DecelerateInterpolator()
-        logo.startAnimation(a)
-        logo.animate().setDuration(dur).translationX(-240f).doAfter {
-            logo.visibility = View.GONE
-        }
+//        val a = ResizeAnimation(logo, resources.toPx(64), logo.measuredHeight, square = true)
+//        a.duration = 300
+//        a.interpolator = DecelerateInterpolator()
+//        logo.startAnimation(a)
+//        logo.animate().setDuration(dur).translationX(-240f).doAfter {
+//            logo.visibility = View.GONE
+//        }
 
-        header.visibility = View.VISIBLE
-        header.animate().translationX(0f).alpha(1f)
+//        header.visibility = View.VISIBLE
+//        header.animate().translationX(0f).alpha(1f)
+//
+//        back.animate().setDuration(dur).translationX(0f)
 
-        back.animate().setDuration(dur).translationX(0f)
-
-        actions.forEach { action ->
-            action.animate().translationX(0f).alpha(1f)
-        }
+//        actions.forEach { action ->
+//            action.animate().translationX(0f).alpha(1f)
+//        }
 
         toBackground(color = bg ?: R.color.colorBackgroundLight)
         after()
     }
 
-    private fun toActive(after: () -> Unit) {
-        logo.setColorFilter(color(active = true, waiting = waiting))
-        after()
-    }
-
-    private fun fromActive(after: () -> Unit) {
-        logo.setColorFilter(color(active = false, waiting = waiting))
-        after()
-    }
-
-    private fun toWaiting(after: () -> Unit) {
-        logo.setColorFilter(color(active = active, waiting = true))
-        logo.isEnabled = false
-        after()
-    }
-
-    private fun fromWaiting(after: () -> Unit) {
-        logo.setColorFilter(color(active = active, waiting = false))
-        logo.isEnabled = true
-        after()
-    }
+//    private fun toActive(after: () -> Unit) {
+//        logo.setColorFilter(color(active = true, waiting = waiting))
+//        after()
+//    }
+//
+//    private fun fromActive(after: () -> Unit) {
+//        logo.setColorFilter(color(active = false, waiting = waiting))
+//        after()
+//    }
+//
+//    private fun toWaiting(after: () -> Unit) {
+//        logo.setColorFilter(color(active = active, waiting = true))
+//        logo.isEnabled = false
+//        after()
+//    }
+//
+//    private fun fromWaiting(after: () -> Unit) {
+//        logo.setColorFilter(color(active = active, waiting = false))
+//        logo.isEnabled = true
+//        after()
+//    }
 
     private fun toBackground(color: Int?, after: () -> Unit = {}) {
         val colorFrom = (background as ColorDrawable).color

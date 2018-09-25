@@ -33,28 +33,28 @@ class TunnelDashCountDropped(
     }
 }
 
-class TunnelDashHostsCount(
-        val ctx: Context,
-        val s: Filters = ctx.inject().instance(),
-        val cmd: Commands = ctx.inject().instance()
-) : Dash(DASH_ID_HOSTS_COUNT,
-        R.drawable.ic_counter,
-        ctx.getBrandedString(R.string.tunnel_hosts_desc),
-        onClick = { cmd.send(SyncFilters()); cmd.send(SyncHostsCache()); true }
-) {
-
-    init {
-        launch {
-            val request = MonitorHostsCount()
-            cmd.subscribe(request).consumeEach {
-                launch(UI) { text = getCountString(it) }
-            }
-        }
-    }
-
-    private fun getCountString(count: Int): String {
-        return if (count >= 0) ctx.resources.getString(R.string.tunnel_hosts_count, count)
-        else ctx.resources.getString(R.string.tunnel_hosts_updating)
-    }
-}
+//class TunnelDashHostsCount(
+//        val ctx: Context,
+//        val s: Filters = ctx.inject().instance(),
+//        val cmd: Commands = ctx.inject().instance()
+//) : Dash(DASH_ID_HOSTS_COUNT,
+//        R.drawable.ic_counter,
+//        ctx.getBrandedString(R.string.tunnel_hosts_desc),
+//        onClick = { cmd.send(SyncFilters()); cmd.send(SyncHostsCache()); true }
+//) {
+//
+//    init {
+//        launch {
+//            val request = MonitorHostsCount()
+//            cmd.subscribe(request).consumeEach {
+//                launch(UI) { text = getCountString(it) }
+//            }
+//        }
+//    }
+//
+//    private fun getCountString(count: Int): String {
+//        return if (count >= 0) ctx.resources.getString(R.string.tunnel_hosts_count, count)
+//        else ctx.resources.getString(R.string.tunnel_hosts_updating)
+//    }
+//}
 

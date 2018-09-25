@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity(), LazyKodeinAware {
         infoView = findViewById(R.id.info) as AInfoView
         enabledStateActor.listeners.add(enabledStateListener)
 
-        topBar = findViewById(R.id.topbar) as ATopBarView
+//        topBar = findViewById(R.id.topbar) as ATopBarView
 
         val getRadiusSize = {
             val size = android.graphics.Point()
@@ -91,26 +91,26 @@ class MainActivity : AppCompatActivity(), LazyKodeinAware {
                 ui = ui,
                 reveal = findViewById(R.id.reveal) as RevealFrameLayout,
                 revealContainer = findViewById(R.id.reveal_container) as FrameLayout,
-                topBar = topBar!!,
+//                topBar = topBar!!,
                 radiusSize = getRadiusSize()
         )
 
         val shadow = findViewById(R.id.info_shadow) as View
         shadow.visibility = if(landscape) View.INVISIBLE else View.VISIBLE
 
-        ATopBarActor(
-                xx = kodein,
-                m = t,
-                v = topBar!!,
-                enabledStateActor = enabledStateActor,
-                contentActor = contentActor!!,
-                infoView = infoView!!,
-                infoViewShadow = shadow,
-                shadow = findViewById(R.id.shadow),
-                window = window,
-                ui = ui,
-                pages = pages
-        )
+//        ATopBarActor(
+//                xx = kodein,
+//                m = t,
+//                v = topBar!!,
+//                enabledStateActor = enabledStateActor,
+//                contentActor = contentActor!!,
+//                infoView = infoView!!,
+//                infoViewShadow = shadow,
+//                shadow = findViewById(R.id.shadow),
+//                window = window,
+//                ui = ui,
+//                pages = pages
+//        )
 
         grid = findViewById(R.id.grid) as AGridView
         grid?.ui = ui

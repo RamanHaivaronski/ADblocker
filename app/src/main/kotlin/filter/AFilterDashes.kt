@@ -60,44 +60,44 @@ class DashFilterBlacklist(
     }
 }
 
-class DashFilterWhitelist(
-        val ctx: Context,
-        val s: Filters = ctx.inject().instance(),
-        val ui: UiState = ctx.inject().instance(),
-        val cmd: Commands = ctx.inject().instance()
-) : Dash(DASH_ID_WHITELIST,
-        R.drawable.ic_verified,
-        text = ctx.getString(R.string.filter_whitelist_text_none),
-        menuDashes = Triple(
-                AddWhitelist(ctx, s), GenerateWhitelist(ctx, s), ShowSystemAppsWhitelist(ctx, ui)
-        ),
-        onBack = { s.changed %= true },
-        hasView = true
-) {
-
-    init {
-        launch {
-            cmd.subscribe(MonitorFilters()).consumeEach {
-                launch(UI) { update(it.filter { it.active && it.whitelist })}
-            }
-        }
-    }
-
-    private fun update(downloadedFilters: List<Filter>) {
-        if (downloadedFilters.isEmpty()) text = ctx.getString(R.string.filter_whitelist_text_none)
-        else text = ctx.resources.getString(R.string.filter_whitelist_text, downloadedFilters.size)
-    }
-
-    override fun createView(parent: Any): Any? {
-        val view = LayoutInflater.from(ctx).inflate(R.layout.view_customlist, parent as ViewGroup, false)
-        if (view is AFilterListView) {
-            val activity: ComponentProvider<MainActivity> = ctx.inject().instance()
-            view.landscape = activity.get()?.landscape ?: false
-            view.whitelist = true
-        }
-        return view
-    }
-}
+//class DashFilterWhitelist(
+//        val ctx: Context,
+//        val s: Filters = ctx.inject().instance(),
+//        val ui: UiState = ctx.inject().instance(),
+//        val cmd: Commands = ctx.inject().instance()
+//) : Dash(DASH_ID_WHITELIST,
+//        R.drawable.ic_verified,
+//        text = ctx.getString(R.string.filter_whitelist_text_none),
+//        menuDashes = Triple(
+//                AddWhitelist(ctx, s), GenerateWhitelist(ctx, s), ShowSystemAppsWhitelist(ctx, ui)
+//        ),
+//        onBack = { s.changed %= true },
+//        hasView = true
+//) {
+//
+//    init {
+//        launch {
+//            cmd.subscribe(MonitorFilters()).consumeEach {
+//                launch(UI) { update(it.filter { it.active && it.whitelist })}
+//            }
+//        }
+//    }
+//
+//    private fun update(downloadedFilters: List<Filter>) {
+//        if (downloadedFilters.isEmpty()) text = ctx.getString(R.string.filter_whitelist_text_none)
+//        else text = ctx.resources.getString(R.string.filter_whitelist_text, downloadedFilters.size)
+//    }
+//
+//    override fun createView(parent: Any): Any? {
+//        val view = LayoutInflater.from(ctx).inflate(R.layout.view_customlist, parent as ViewGroup, false)
+//        if (view is AFilterListView) {
+//            val activity: ComponentProvider<MainActivity> = ctx.inject().instance()
+//            view.landscape = activity.get()?.landscape ?: false
+//            view.whitelist = true
+//        }
+//        return view
+//    }
+//}
 
 class AddBlacklist(
         val ctx: Context,

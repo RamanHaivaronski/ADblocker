@@ -27,7 +27,7 @@ fun displayNotification(ctx: Context, reason: String) {
     val b = NotificationCompat.Builder(ctx)
     b.setContentTitle(ctx.getString(R.string.notification_blocked_title))
     b.setContentText(ctx.getString(R.string.notification_blocked_text, reason))
-    b.setSmallIcon(R.drawable.ic_stat_blokada)
+    b.setSmallIcon(R.drawable.ic_blokada1)
     b.setPriority(NotificationCompat.PRIORITY_MAX)
     b.setVibrate(LongArray(0))
 
@@ -82,7 +82,7 @@ fun createNotificationKeepAlive(ctx: Context, count: Int, last: String): Notific
         b.setContentText(ctx.getString(R.string.notification_keepalive_content, last))
     }
 
-    b.setSmallIcon(R.drawable.ic_stat_blokada)
+    b.setSmallIcon(R.drawable.ic_blokada1)
     b.setPriority(NotificationCompat.PRIORITY_MIN)
     b.setOngoing(true)
 
@@ -117,7 +117,7 @@ fun displayNotificationForUpdate(ctx: Context, versionName: String) {
     val b = NotificationCompat.Builder(ctx)
     b.setContentTitle(ctx.getString(R.string.update_notification_title))
     b.setContentText(ctx.getString(R.string.update_notification_text, versionName))
-    b.setSmallIcon(R.drawable.ic_stat_blokada)
+    b.setSmallIcon(R.drawable.ic_blokada1)
     b.setPriority(NotificationCompat.PRIORITY_LOW)
     b.setVibrate(LongArray(0))
 
