@@ -45,6 +45,7 @@ android {
         versionName androidGitVersion.name()
         versionCode androidGitVersion.code()
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        version "1.0"
     }
     lintOptions {
         abortOnError false
@@ -52,29 +53,19 @@ android {
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
         debug.java.srcDirs += 'src/unofficial/kotlin'
-        release.java.srcDirs += 'src/official/kotlin'
-        release.res.srcDirs += 'src/official/res'
+        release.java.srcDirs += 'src/unofficial/kotlin'
+        //release.res.srcDirs += 'src/official/res'
         release.java.srcDirs += 'src/official-imports/kotlin'
-        official.java.srcDirs += 'src/official/kotlin'
-        official.res.srcDirs += 'src/official/res'
-        official.java.srcDirs += 'src/official-imports/kotlin'
-        beta.java.srcDirs += 'src/official/kotlin'
-        beta.res.srcDirs += 'src/official/res'
-        beta.java.srcDirs += 'src/official-imports/kotlin'
-        adblockerHome.java.srcDirs += 'src/adblocker/kotlin'
-        adblockerHome.res.srcDirs += 'src/adblocker/res'
 
-        adblockerFdroid.java.srcDirs += 'src/adblocker/kotlin'
-        adblockerFdroid.res.srcDirs += 'src/adblocker/res'
-        dnsHome.java.srcDirs += 'src/dns/kotlin'
-        dnsHome.res.srcDirs += 'src/dns/res'
+        //adblockerHome.java.srcDirs += 'src/adblocker/kotlin'
+        //adblockerHome.res.srcDirs += 'src/adblocker/res'
     }
     signingConfigs {
         release {
             keyAlias 'blokada'
-            keyPassword "111111"
-            storeFile file("D:\\newKey.jks")
-            storePassword "111111"
+            keyPassword "123456"
+            storeFile file("D:\\keystore\\blokada.jks")
+            storePassword "123456"
         }
     }
     buildTypes {
@@ -86,25 +77,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
-        official {
-            initWith(release)
-            matchingFallbacks = ['release']
-        }
-        beta {
-            initWith(release)
-            matchingFallbacks = ['release']
-        }
     }
     flavorDimensions("model")
     productFlavors {
         adblockerHome {
-            applicationId "org.blokada.origin.alarm"
-        }
-        adblockerFdroid {
-            applicationId "org.blokada.alarm"
-        }
-        dnsHome {
-            applicationId "org.blokada.alarm.dnschanger"
+            applicationId "org.prototype.origin.alarm"
         }
     }
 }
