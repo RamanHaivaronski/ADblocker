@@ -254,12 +254,12 @@ class FiltersActor(
         val downloadFilters: () -> Set<Filter> = { runBlocking {
             val serializer = FilterSerializer()
             try {
-                    serializer.deserialise(load({ openUrl(url(), 10 * 1000) }))
+                    serializer.deserialise(load({ openUrl(url(), 60000) }))
                 } catch (e: Exception) {
                     // Try one more time in case it was a ephemeral problem
                     delay(3000)
                     try {
-                        serializer.deserialise(load({ openUrl(url(), 10 * 1000) }))
+                        serializer.deserialise(load({ openUrl(url(), 60000) }))
                     } catch (e: Exception) {
                         w("failed to download filters after second try", e)
                         emptySet<Filter>()
@@ -467,6 +467,7 @@ class FiltersActor(
                 val source = it.second
                 try {
                     v("download filters: processing", id)
+
                     val hosts = source.fetch()
                     send(HostsCache(id, hosts.toSet()))
                     v("download filters: finished", id)

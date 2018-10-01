@@ -93,22 +93,22 @@ class WelcomeDialogManager (
 //                dialogObsolete.show()
 //                displaying = true
 //            }
-            step == 0 && !welcome.introSeen() -> {
-                dialogIntro.onClosed = { accept ->
-                    displaying = false
-                    welcome.introSeen %= true
-                    if (accept == 1) {
-                        afterWelcome()
-                        run(step = 9)
-                    } else if (accept == 2) {
-                        run(step = 1)
-                    } else {
-                        run(step = 9)
-                    }
-                }
-                //dialogIntro.show()
-                displaying = true
-            }
+//            step == 0 && !welcome.introSeen() -> {
+//                dialogIntro.onClosed = { accept ->
+//                    displaying = false
+//                    welcome.introSeen %= true
+//                    if (accept == 1) {
+//                        afterWelcome()
+//                        run(step = 9)
+//                    } else if (accept == 2) {
+//                        run(step = 1)
+//                    } else {
+//                        run(step = 9)
+//                    }
+//                }
+//                //dialogIntro.show()
+//                displaying = true
+//            }
 //            step == 0 && version.previousCode() < currentAppVersion -> {
 //                version.previousCode %= currentAppVersion
 //                dialogUpdate.onClosed = { accept ->
@@ -135,18 +135,18 @@ class WelcomeDialogManager (
 //                dialogCta.show()
 //                displaying = true
 //            }
-            step == 1  -> {
-                dialogGuide.onClosed = { accept ->
-                    displaying = false
-                    if (accept == 1) {
-                    } else if (accept == 2) {
-                        OpenInBrowserDash(ctx, pages.help).onClick?.invoke(0)
-                    }
-                    run(step = 9)
-                }
-                //dialogGuide.show()
-                displaying = true
-            }
+//            step == 1  -> {
+//                dialogGuide.onClosed = { accept ->
+//                    displaying = false
+//                    if (accept == 1) {
+//                    } else if (accept == 2) {
+//                        //OpenInBrowserDash(ctx, pages.help).onClick?.invoke(0)
+//                    }
+//                    run(step = 9)
+//                }
+//                //dialogGuide.show()
+//                displaying = true
+//            }
 //            step == 2 && welcome.patronShow() -> {
 //                dialogPatron.onClosed = { button ->
 //                    displaying = false
@@ -198,41 +198,41 @@ class WelcomeDialogManager (
         }
     }
 
-    private val dialogIntro by lazy {
-        val dash = WebDash(xx, pages.intro, reloadOnError = true)
-        SimpleDialog(xx, dash, additionalButton = R.string.welcome_help, loadFirst = true)
-    }
+//    private val dialogIntro by lazy {
+//        val dash = WebDash(xx, pages.intro, reloadOnError = true)
+//        SimpleDialog(xx, dash, additionalButton = R.string.welcome_help, loadFirst = true)
+//    }
 
-    private val dialogGuide by lazy {
-        val dash = WebDash(xx, pages.help, reloadOnError = true)
-        SimpleDialog(xx, dash, additionalButton = R.string.welcome_open, loadFirst = true)
-    }
+//    private val dialogGuide by lazy {
+//        val dash = WebDash(xx, pages.help, reloadOnError = true)
+//        SimpleDialog(xx, dash, additionalButton = R.string.welcome_open, loadFirst = true)
+//    }
 
-    private val dialogPatron by lazy {
-        val dash = WebDash(xx, pages.patron, reloadOnError = true, forceEmbedded = true,
-                javascript = true, big = true)
-        SimpleDialog(xx, dash, continueButton = R.string.welcome_open, loadFirst = true)
-    }
+//    private val dialogPatron by lazy {
+//        val dash = WebDash(xx, pages.patron, reloadOnError = true, forceEmbedded = true,
+//                javascript = true, big = true)
+//        SimpleDialog(xx, dash, continueButton = R.string.welcome_open, loadFirst = true)
+//    }
 
-    private val dialogCta by lazy {
-        val dash = WebDash(xx, pages.cta, reloadOnError = true)
-        SimpleDialog(xx, dash, loadFirst = true)
-    }
+//    private val dialogCta by lazy {
+//        val dash = WebDash(xx, pages.cta, reloadOnError = true)
+//        SimpleDialog(xx, dash, loadFirst = true)
+//    }
 
-    private val dialogUpdate by lazy {
-        val dash = WebDash(xx, pages.updated, reloadOnError = true)
-       SimpleDialog(xx, dash, continueButton = R.string.welcome_donate, additionalButton = R.string.welcome_insiders,
-               loadFirst = true)
-    }
+//    private val dialogUpdate by lazy {
+//        val dash = WebDash(xx, pages.updated, reloadOnError = true)
+//       SimpleDialog(xx, dash, continueButton = R.string.welcome_donate, additionalButton = R.string.welcome_insiders,
+//               loadFirst = true)
+//    }
 
-    private val dialogObsolete by lazy {
-        val dash = WebDash(xx, pages.obsolete, reloadOnError = true)
-        SimpleDialog(xx, dash, continueButton = R.string.update_button, loadFirst = true)
-    }
+//    private val dialogObsolete by lazy {
+//        val dash = WebDash(xx, pages.obsolete, reloadOnError = true)
+//        SimpleDialog(xx, dash, continueButton = R.string.update_button, loadFirst = true)
+//    }
 
-    private val dialogCleanup by lazy {
-        val dash = WebDash(xx, pages.cleanup, reloadOnError = true)
-        SimpleDialog(xx, dash, loadFirst = true)
-    }
+//    private val dialogCleanup by lazy {
+//        val dash = WebDash(xx, pages.cleanup, reloadOnError = true)
+//        SimpleDialog(xx, dash, loadFirst = true)
+//    }
 
 }

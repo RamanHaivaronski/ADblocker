@@ -57,8 +57,8 @@ android {
         //release.res.srcDirs += 'src/official/res'
         release.java.srcDirs += 'src/official-imports/kotlin'
 
-        //adblockerHome.java.srcDirs += 'src/adblocker/kotlin'
-        //adblockerHome.res.srcDirs += 'src/adblocker/res'
+        adblockerHome.java.srcDirs += 'src/adblocker/kotlin'
+        adblockerHome.res.srcDirs += 'src/adblocker/res'
     }
     signingConfigs {
         release {

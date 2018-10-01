@@ -15,6 +15,7 @@ import nl.komponents.kovenant.android.androidUiDispatcher
 import nl.komponents.kovenant.ui.KovenantUi
 
 fun newGscoreModule(ctx: Context): Kodein.Module {
+
     return Kodein.Module {
         bind<Context>() with singleton { ctx }
         bind<Journal>() with singleton { ALogcatJournal("gscore") }

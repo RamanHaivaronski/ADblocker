@@ -60,7 +60,7 @@ class MainApplication: Application(), KodeinAware {
         import(newDnsModule(this@MainApplication))
         import(newWelcomeModule(this@MainApplication))
         import(newPagesModule(this@MainApplication))
-        import(newUpdateModule(this@MainApplication))
+        //import(newUpdateModule(this@MainApplication))
         import(newKeepAliveModule(this@MainApplication))
         import(newAppModule(this@MainApplication), allowOverride = true)
         import(newFlavorModule(this@MainApplication), allowOverride = true)

@@ -78,7 +78,7 @@ fun newFlavorModule(ctx: Context): Kodein.Module {
             listOf(
 //                    UpdateDash(ctx).activate(true),
                     TunnelDashCountDropped(ctx).activate(true),
-                    DashFilterBlacklist(ctx).activate(true),
+                    DashFilterBlacklist(ctx).activate(true)
 //                    DashFilterWhitelist(ctx).activate(true),
 //                    DashDns(lazy).activate(true),
 //                    NotificationDashOn(ctx).activate(true),
@@ -86,17 +86,17 @@ fun newFlavorModule(ctx: Context): Kodein.Module {
 //                    AutoStartDash(ctx).activate(true),
 //                    ConnectivityDash(ctx).activate(true),
 //                    TunnelDashHostsCount(ctx).activate(true),
-                    PatronDash(lazy).activate(false),
-                    PatronAboutDash(lazy).activate(false),
-                    DonateDash(lazy).activate(false),
-                    NewsDash(lazy).activate(false),
-                    FeedbackDash(lazy).activate(false),
-                    FaqDash(lazy).activate(false),
-                    ChangelogDash(lazy).activate(false),
-                    AboutDash(ctx).activate(false),
-                    CreditsDash(lazy).activate(false),
-                    CtaDash(lazy).activate(false),
-                    ShareLogDash(lazy).activate(false)
+//                    PatronDash(lazy).activate(false),
+//                    PatronAboutDash(lazy).activate(false),
+//                    DonateDash(lazy).activate(false),
+//                    NewsDash(lazy).activate(false),
+//                    FeedbackDash(lazy).activate(false),
+//                    FaqDash(lazy).activate(false),
+//                    ChangelogDash(lazy).activate(false),
+//                    AboutDash(ctx).activate(false),
+//                    CreditsDash(lazy).activate(false),
+//                    CtaDash(lazy).activate(false),
+//                    ShareLogDash(lazy).activate(false)
             )
         }
         onReady {
@@ -115,7 +115,7 @@ fun newFlavorModule(ctx: Context): Kodein.Module {
             // Display notifications for dropped
             s.tunnelRecentDropped.doOnUiWhenSet().then {
                 if (s.tunnelRecentDropped().isEmpty()) hideNotification(ctx)
-                else if (ui.notifications()) displayNotification(ctx, s.tunnelRecentDropped().last())
+                //else if (ui.notifications()) displayNotification(ctx, s.tunnelRecentDropped().last())
             }
 
             // Hide notification when disabled

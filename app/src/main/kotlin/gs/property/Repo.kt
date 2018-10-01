@@ -31,6 +31,7 @@ class RepoImpl(
 
     override val url = newPersistedProperty(kctx, BasicPersistence(xx, "repo_url"), zeroValue = { "" })
 
+
     init {
         url.doWhenSet().then {
             j.log("repo: url set: ${url()}")
@@ -40,7 +41,9 @@ class RepoImpl(
 
     private val repoRefresh = {
         j.log("repo: refresh: start")
+
         val repoURL = java.net.URL(url())
+
         val fetchTimeout = 10 * 10000
 
         try {
@@ -77,7 +80,7 @@ class RepoImpl(
 
     override val content = newPersistedProperty(kctx, ARepoPersistence(xx),
             zeroValue = { RepoContent(null, listOf(), 0, "", listOf(), "") },
-            refresh = { repoRefresh() },
+            //refresh = { repoRefresh() },
             shouldRefresh = {
                 val ttl = 86400 * 1000
 

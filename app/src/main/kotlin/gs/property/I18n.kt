@@ -38,7 +38,8 @@ class I18nImpl (
     private val res: Resources by lazy { ctx.resources }
 
     override fun contentUrl(): String {
-        return "%s/%s".format(repo.content().contentPath ?: "http://localhost", locale())
+        //return "%s/%s".format(repo.content().contentPath ?: "http://localhost", locale())
+        return "https://raw.githubusercontent.com/SergeyProkopenko/test-files/master"
     }
 
     override val locale = newPersistedProperty(kctx, BasicPersistence(xx, "locale"), { "en" },
