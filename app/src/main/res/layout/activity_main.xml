@@ -52,6 +52,7 @@
 
     <core.AFloaterView
         android:id="@+id/fab"
+        android:onClick="onNewActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -59,19 +60,10 @@
         android:layout_marginEnd="166dp"
         android:layout_marginBottom="74dp"
         android:contentDescription="main action"
+        android:visibility="visible"
         android:src="@drawable/ic_power"
         android:tint="@color/colorActive"
         app:borderWidth="0dp"
         app:elevation="4dp" />
 
-    <Button
-        android:id="@+id/button"
-        android:onClick="onNewActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/fab"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="187dp"
-        android:text="Button" />
 </RelativeLayout>

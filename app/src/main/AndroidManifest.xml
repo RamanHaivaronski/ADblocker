@@ -43,11 +43,7 @@
             android:label="@string/branding_app_name"
             android:launchMode="singleTask"
             android:theme="@style/BlokadaColors.Main.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <service android:name="notification.ANotificationsOffService" />
@@ -95,7 +91,14 @@
         <activity
             android:name="org.prototype.origin.alarm.LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name="core.SecondActivity"></activity>
+        <activity android:name="core.SecondActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

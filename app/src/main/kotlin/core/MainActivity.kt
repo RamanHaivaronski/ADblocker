@@ -30,6 +30,8 @@ import tunnel.startAskTunnelPermissions
 import tunnel.stopAskTunnelPermissions
 import java.lang.ref.WeakReference
 
+
+
 class MainActivity : AppCompatActivity(), LazyKodeinAware {
 
     override val kodein = LazyKodein(inject)
@@ -61,10 +63,30 @@ class MainActivity : AppCompatActivity(), LazyKodeinAware {
     private var listener12: IWhen? = null
     private var listener13: gs.property.IWhen? = null
 
+
+
     fun onNewActivity(view: View) {
         val randomIntent = Intent(this, SecondActivity::class.java)
         startActivity(randomIntent)
     }
+
+
+
+
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//
+//        val infoTextView = findViewById<View>(R.id.textViewInfo) as TextView
+//
+//        if (requestCode == LICENSE) {
+//            if (resultCode == Activity.RESULT_OK) {
+//                val thiefname = data.getStringExtra(ChooseActivity.THIEF)
+//                infoTextView.text = thiefname
+//            } else {
+//                infoTextView.text = "a" // стираем текст
+//            }
+//        }
+//    }
 
     override fun onCreate(savedInstanceState: android.os.Bundle?) {
         super.onCreate(savedInstanceState)
@@ -172,6 +194,23 @@ class MainActivity : AppCompatActivity(), LazyKodeinAware {
         activityResultListeners.forEach { it(resultCode, data) }
         activityResultListeners.clear()
         stopAskTunnelPermissions(resultCode)
+
+
+        val result = intent.getStringExtra(LICENSE)
+        //val infoTextView = findViewById<View>(R.id.textView3) as TextView
+
+        if(result == "Activated"){
+           // infoTextView.text = result
+            val fab = findViewById(R.id.fab) as AFloaterView
+            fab.isEnabled = false
+            AFabActor(fab, t, enabledStateActor, contentActor!!)
+        } else if (result == "Activation failed") {
+           // infoTextView.text = result
+        }
+
+
+
+
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -305,6 +344,7 @@ class MainActivity : AppCompatActivity(), LazyKodeinAware {
     }
 
     companion object {
+        const val LICENSE = ""
         var staticContext = Sync(WeakReference(null as Activity?))
         fun askPermissions() {
             val act = staticContext.get().get()

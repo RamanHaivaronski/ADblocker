@@ -16,6 +16,7 @@ class AFloaterView(
         attributeSet: AttributeSet
 ) : FloatingActionButton(ctx, attributeSet) {
 
+
     var onClick = {}
 
     var icon: Int? = R.drawable.ic_power
@@ -87,9 +88,11 @@ class AFabActor(
                 val d = dash.menuDashes.first!!
                 enabledStateActor.listeners.remove(this)
                 val icon = d.icon as Int
+
                 fabView.icon = icon
                 fabView.onClick = {
                     d.onClick?.invoke(d)
+
                 }
             }
             else -> fabView.icon = null

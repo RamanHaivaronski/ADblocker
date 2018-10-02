@@ -12,7 +12,6 @@ enum class Product {
                 "org.blokada",
                 "org.blokada.origin.alarm",
                 "org.blokada.alarm" -> Product.A
-                "org.blokada.alarm.dnschanger" -> Product.DNS
                 else -> Product.A
             }
         }
@@ -26,8 +25,6 @@ enum class ProductType {
         fun current(): ProductType {
             return when(BuildConfig.BUILD_TYPE.toLowerCase()) {
                 "debug" -> DEBUG
-                "official" -> OFFICIAL
-                "beta" -> BETA
                 else -> RELEASE
             }
         }
