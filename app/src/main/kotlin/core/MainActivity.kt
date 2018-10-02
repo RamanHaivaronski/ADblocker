@@ -61,6 +61,11 @@ class MainActivity : AppCompatActivity(), LazyKodeinAware {
     private var listener12: IWhen? = null
     private var listener13: gs.property.IWhen? = null
 
+    fun onNewActivity(view: View) {
+        val randomIntent = Intent(this, SecondActivity::class.java)
+        startActivity(randomIntent)
+    }
+
     override fun onCreate(savedInstanceState: android.os.Bundle?) {
         super.onCreate(savedInstanceState)
         activityContext.set(this)
@@ -95,8 +100,8 @@ class MainActivity : AppCompatActivity(), LazyKodeinAware {
                 radiusSize = getRadiusSize()
         )
 
-        val shadow = findViewById(R.id.info_shadow) as View
-        shadow.visibility = if(landscape) View.INVISIBLE else View.VISIBLE
+        //val shadow = findViewById(R.id.info_shadow) as View
+        //shadow.visibility = if(landscape) View.INVISIBLE else View.VISIBLE
 
 //        ATopBarActor(
 //                xx = kodein,
@@ -130,6 +135,7 @@ class MainActivity : AppCompatActivity(), LazyKodeinAware {
         }
 
         val fab = findViewById(R.id.fab) as AFloaterView
+        fab.isEnabled = false
         AFabActor(fab, t, enabledStateActor, contentActor!!)
 
         if (landscape) {
@@ -332,4 +338,6 @@ class MainActivity : AppCompatActivity(), LazyKodeinAware {
 fun Context.getBrandedString(resId: Int): String {
     return getString(resId, getString(R.string.branding_app_name_short))
 }
+
+
 
